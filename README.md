@@ -1,70 +1,111 @@
-# Getting Started with Create React App
+# Aplicación de Administración
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+La Aplicación de Administración es una mini aplicación web desarrollada en React que permite a los usuarios gestionar una lista de elementos, estos elementos pueden ser reemplazados según lo que se desee administrar. Cada elemento, para este caso específico, tiene varias propiedades, incluyendo un nombre, una descripción, un responsable, una prioridad, un nivel y una fecha.
 
-## Available Scripts
+## Características
 
-In the project directory, you can run:
+- **Lista de elementos**: Los usuarios pueden ver todos los elementos en una lista. Cada elemento se muestra en su propia tarjeta con todos sus detalles.
 
-### `npm start`
+- **Editar elementos**: Al hacer clic en el botón "Editar" en la tarjeta de un elemento, los usuarios son redirigidos a una página de edición donde pueden modificar los detalles del elemento.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Eliminar elementos**: Los usuarios pueden eliminar elementos de la lista haciendo clic en el botón "Eliminar" en la tarjeta del elemento.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Código
 
-### `npm test`
+El código de la aplicación se divide en varios componentes de React:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `Element`: Este componente representa una tarjeta de elemento individual en la lista. Recibe un objeto `element` como prop y muestra sus detalles. También maneja la redirección a la página de edición y la eliminación del elemento.
 
-### `npm run build`
+- `List`: Este componente mapea un array de elementos y renderiza un componente `Element` para cada uno.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `ElementProvider`: Este componente proporciona el estado de los elementos a través del contexto de React. Utiliza el hook personalizado `useLocalStorage` para persistir el estado de los elementos en el almacenamiento local del navegador.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Uso
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Para usar la aplicación, simplemente se navega a la página principal para ver la lista de elementos. Se puede hacer clic en "Editar" para modificar un elemento o en "Eliminar" para eliminarlo de la lista.
 
-### `npm run eject`
+___
+***
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Configuración del Proyecto
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Este proyecto se inició utilizando [Create React App](https://create-react-app.dev/), una herramienta que configura automáticamente un entorno de desarrollo de React. Los pasos que se sigue para configurar el proyecto:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Instalación
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Primero, necesitamos instalar Node.js y npm en nuestro sistema. Se puede descargar Node.js desde su [sitio web oficial](https://nodejs.org/).
 
-## Learn More
+Una vez que Node.js está instalado, se puede verificar la instalación ejecutando los comandos en tu terminal:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+node --version
+npm --version
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Estos comandos deben mostrar las versiones de Node.js y npm, respectivamente.
+Si ya está instalando, se salta este paso.
 
-### Code Splitting
+## Creación del Proyecto
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Para crear el proyecto, ejecutamos el siguiente comando en la terminal:
 
-### Analyzing the Bundle Size
+```bash
+npx create-react-app library-with-react
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Este comando crea un nuevo proyecto de React con el nombre "library-with-react" e instala todas las dependencias necesarias.
 
-### Making a Progressive Web App
+## Dependencias Adicionales
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Además de las dependencias que Create React App instala automáticamente, también se necesita contar con algunas dependencias adicionales para este proyecto. Se ejecutan los comandos para instalarlas:
 
-### Advanced Configuration
+```bash
+npm install --save bootstrap react-bootstrap react-router-dom sweetalert2 sass
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- `bootstrap` y `react-bootstrap`: 
+Proporcionan componentes de Bootstrap listos para usar en React.
+- `react-router-dom`: 
+Permite manejar el enrutamiento en nuestra aplicación de React.
+- `sweetalert2`: 
+Esta biblioteca permite mostrar alertas bonitas y personalizables.
+- `sass`: 
+Esta biblioteca permite escribir estilos utilizando Sass, un preprocesador de CSS.
 
-### Deployment
+## Ejecución del Proyecto
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Para ejecutar el proyecto, puedes usar el siguiente comando en la terminal:
 
-### `npm run build` fails to minify
+```bash
+npm start
+```
+___
+***
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Hooks Utilizados
+
+En este proyecto, se utilizaron varios Hooks de React para manejar el estado y los efectos secundarios:
+
+- **useState**: Este Hook se utiliza para manejar el estado local en los componentes. En nuestro componente `Element`, por ejemplo, usamos `useState` para manejar el estado de `shouldRedirect`.
+
+- **useEffect**: Este Hook se utiliza para manejar los efectos secundarios en los componentes. En este proyecto, `useEffect` podría ser utilizado para realizar operaciones como la carga inicial de los elementos desde una API o el almacenamiento local.
+
+- **useContext**: Este Hook se utiliza para acceder al contexto de React. En este proyecto, usamos `useContext` para acceder al estado de los elementos proporcionado por `ElementProvider`.
+
+- **useLocalStorage**: Este es un Hook personalizado que utilizamos para persistir el estado de los elementos en el almacenamiento local del navegador. Este Hook utiliza `useState` y `useEffect` para manejar el estado y sincronizarlo con el almacenamiento local.
+
+## Adaptación a Proyectos Más Complejos
+
+Este proyecto se puede adaptar fácilmente a proyectos más complejos:
+
+- **Manejo de errores**: Se podría agregar un manejo de errores más robusto, por ejemplo, mostrando mensajes de error al usuario cuando una operación falla.
+
+- **Autenticación**: Se podría agregar autenticación para restringir el acceso a ciertas partes de la aplicación.
+
+- **APIs**: En lugar de almacenar los elementos en el almacenamiento local, se podría almacenarlos en una base de datos y acceder a ellos a través de una API.
+
+- **Rutas protegidas**: se podría utilizar rutas protegidas para asegurarnos de que solo los usuarios autenticados puedan acceder a ciertas páginas.
+
+
+
+
