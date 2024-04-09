@@ -1,18 +1,19 @@
 import React, { useContext, useState } from "react";
 import FormElement from "./FormElement.js";
-import { NavLink, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ElementContext } from "../context/ElementContext.js";
 import Swall from "sweetalert2";
 
 const Edit = () => {
 
+    const navigate = useNavigate();
     const { elements, setElements } = useContext(ElementContext);
     const { id } = useParams();
     const elementEdit = elements.find((element) => element.id === id);
     const [shouldRedirect, setShouldRedirect] = useState(false);
 
     if (shouldRedirect) {
-        return <NavLink to="/" />;
+        navigate("/")
     }
 
     const handleOnSubmit = (element) => {
@@ -27,7 +28,7 @@ const Edit = () => {
             });
             setShouldRedirect(true);
         } catch (error) {
-            console.error(error);
+            console.error(error)
             Swall.fire({
                 icon: "error",
                 title: "Error",

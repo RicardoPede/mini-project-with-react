@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Element = ({ element, handleDeleteElement }) => {
     // console.log(element);
+    const navigate = useNavigate();
     const [shouldRedirect, setShouldRedirect] = useState(false);
 
     if (shouldRedirect) {
-        return <NavLink to={`/edit/${element.id}`} />;
+        navigate("/edit/" + element.id);
     }
+
     return (
         <div className="col">
             <div className="element-card ">
