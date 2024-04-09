@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import FormElement from "./FormElement.js";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ElementContext } from "../context/ElementContext.js";
 
 const Add = () => {
-    // const NavLink = useNavLink();
+    const navigate = useNavigate();
 
     const { elements, setElements } = useContext(ElementContext);
     const [shouldRedirect, setShouldRedirect] = useState(false);
@@ -16,7 +16,8 @@ const Add = () => {
     }
 
     if (shouldRedirect) {
-        return <NavLink to="/" />;
+        console.log("Redirecting...")
+        navigate("/");
     }
 
     return (

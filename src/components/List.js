@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import _ from "lodash";
 import Element from "./Element.js";
 import { ElementContext } from "../context/ElementContext.js";
@@ -6,7 +6,11 @@ import { ElementContext } from "../context/ElementContext.js";
 const List = () => {
 
     const { elements, setElements } = useContext(ElementContext);
-    console.log(elements)
+    // console.log(elements)
+    useEffect(() => {
+        console.log("List: ", elements);
+    }, [elements]);
+
     const handleDeleteElement = (id) => {
         const newElements = _.filter(elements, (element) => element.id !== id);
         setElements(newElements)

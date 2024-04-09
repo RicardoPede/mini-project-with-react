@@ -14,7 +14,7 @@ const ApplicationRouter = () => {
             <div className="main-container">
                 <ElementProvider>
                     <Routes>
-                        <Route exact path="/" element={<List/>} />
+                        <Route path="/" element={<List/>} />
                         <Route path="/add" element={<Add/>} />
                         <Route path="/edit/:id" element={<Edit/>} />
                         <Route element={() => <NavLink to="/"/>} />
